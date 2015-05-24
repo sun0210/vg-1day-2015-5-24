@@ -34,6 +34,7 @@ function appendMessages(data) {
  * メッセージ挿入
  */
 function appendMessage(message) {
+    var rensyuu = $("<div/>").text(message.created_at).html();
 	var escapeBody = $("<div/>").text(message.body).html();
 	var escapeIcon = $("<div/>").text(message.icon).html();
 
@@ -45,6 +46,7 @@ function appendMessage(message) {
         '<div class="media-body">' +
         '<h4 class="media-heading"></h4>' +
         escapeBody +
+        rensyuu +
 	    '</div>' +
         '</div>' +
         '</td></tr>';
@@ -55,7 +57,7 @@ function appendMessage(message) {
  * APIリクエストコメント取得
  */
 function getMessages(success, error) {
-    var getMessageUri = "http://localhost:8888/messages";
+    var getMessageUri = "http://133.242.225.229/messages";
     return $.ajax({
         type: "get",
         url: getMessageUri,
